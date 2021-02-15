@@ -15,16 +15,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
   
     
     @IBOutlet weak var talepButton: UIButton!
-    @IBOutlet weak var stack2: UIStackView!
-    @IBOutlet weak var stack1: UIStackView!
+
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var stack1Image: UIImageView!
     
     @IBOutlet weak var stack1Lbl: UILabel!
     
-    @IBOutlet weak var stack1View: UIView!
+    @IBOutlet weak var selectedView: UIView!
+
+    @IBOutlet weak var greenView2: UIView!
+    @IBOutlet weak var selectedView2: UIView!
     
+    @IBOutlet weak var greenView1: UIView!
     @IBOutlet weak var stack2Image: UIImageView!
     @IBOutlet weak var stack2Lbl: UILabel!
     
@@ -37,30 +40,36 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         talepButton.layer.cornerRadius = 8.0
         talepButton.clipsToBounds = true
         
-      let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.selectStack (_:)))
-      self.stack1.addGestureRecognizer(gesture)
+        greenView1.layer.cornerRadius = 4.0
+        greenView1.clipsToBounds = true
+        greenView2.layer.cornerRadius = 4.0
+        greenView2.clipsToBounds = true
+        
+        
+       let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.selectStack (_:)))
+       self.selectedView.addGestureRecognizer(gesture)
         let gestrue2 = UITapGestureRecognizer(target: self, action: #selector(self.selectStack2(_:)))
-        self.stack2.addGestureRecognizer(gestrue2)
+        self.selectedView2.addGestureRecognizer(gestrue2)
       
     }
    
     @objc func selectStack(_ sender: UIGestureRecognizer){
        
        stack1Lbl.textColor = .green
-       stack1View.backgroundColor = .green
+       greenView1.backgroundColor = .green
        stack1Image.tintColor = .green
        stack2Image.tintColor = .gray
        stack2Lbl.textColor = .gray
-       stack2View.backgroundColor = .gray
+        greenView2.backgroundColor = .gray
     }
     @objc func selectStack2(_ sender: UIGestureRecognizer){
        
        stack1Lbl.textColor = .gray
-       stack1View.backgroundColor = .gray
+        greenView2.backgroundColor = .green
        stack1Image.tintColor = .gray
         stack2Image.tintColor = .green
         stack2Lbl.textColor = .green
-        stack2View.backgroundColor = .green
+        greenView1.backgroundColor = .gray
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
           return 10
